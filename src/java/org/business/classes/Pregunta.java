@@ -68,7 +68,7 @@ public class Pregunta {
         }
         
         
-        return false;
+        return true;
         
     }
 
@@ -108,7 +108,12 @@ public class Pregunta {
     }
     
     
-    
+    /**
+     * 
+     * @param indicePregunta
+     * @return
+     * @throws SQLException 
+     */
     public boolean insertQuestionsDB(int indicePregunta) throws SQLException{
         
         Connection dbConnection = null;
@@ -173,16 +178,16 @@ public class Pregunta {
 
         String insertTableSQL = "INSERT INTO PREGUNTA"
                 + "(texto,tiempo, id_curso, id_dificultad) VALUES"
-                + "(?,?,?,?) RETURNING id_pregunta";
+                + "(?, '" + tiempo  + "',?,?) RETURNING id_pregunta";
 
         try {
             dbConnection = new DataBaseConnection().getDBConnection();
             preparedStatement = dbConnection.prepareStatement(insertTableSQL);
 
             preparedStatement.setString(1, question);
-            preparedStatement.setString(2,tiempo );
-            preparedStatement.setInt(3, curso);
-            preparedStatement.setInt(4, dificultad);
+            
+            preparedStatement.setInt(2, curso);
+            preparedStatement.setInt(3, dificultad);
             
           
             ResultSet rs;
@@ -194,16 +199,14 @@ public class Pregunta {
             }
             
             
-            this.insertQuestionsDB(indicePregunta);
+           
             // execute insert SQL stetement
            
             dbConnection.close();
             
+             return insertQuestionsDB(indicePregunta);
             
             
-            
-
-            return true;
 
         } catch (SQLException e) {
 

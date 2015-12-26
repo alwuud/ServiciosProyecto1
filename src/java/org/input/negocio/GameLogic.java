@@ -6,6 +6,7 @@
 package org.input.negocio;
 
 import java.sql.*;
+import java.util.ArrayList;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -73,6 +74,39 @@ public class GameLogic {
         }
         return false;
         
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "addPregunta")
+    public Boolean addPregunta(@WebParam(name = "pregunta") String pregunta, @WebParam(name = "dias") int dias, @WebParam(name = "horas") int horas, @WebParam(name = "minutos") int minutos, @WebParam(name = "curso") int curso, @WebParam(name = "dificultad") int dificultad, @WebParam(name = "respuestas") String[] respuestas) {
+        //TODO write your implementation code here:
+        Pregunta nueva = new Pregunta(pregunta, dias, horas, minutos,curso,dificultad);
+        
+        String res[];
+        
+        for(String respuesta: respuestas){
+            res = respuesta.split("~");
+            if(res[0].equals("0"))
+                nueva.addRespuesta(res[1], false);
+            else
+                nueva.addRespuesta(res[1], true);
+            
+            res=null;
+            
+        }
+        try{
+          return nueva.insertDB();
+          
+        }catch(Exception e){
+            e.printStackTrace();
+            
+        }
+               
+        
+        
+       return false;
     }
     
     
