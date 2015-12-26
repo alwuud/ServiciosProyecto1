@@ -13,6 +13,7 @@ import javax.jws.WebParam;
 import org.business.classes.Carrera;
 import org.business.classes.Curso;
 import org.business.classes.Pregunta;
+import org.business.classes.Usuario;
 
 /**
  *
@@ -107,6 +108,24 @@ public class GameLogic {
         
         
        return false;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "addUser")
+    public Boolean addUser(@WebParam(name = "nombre") String nombre, @WebParam(name = "user") String user, @WebParam(name = "password") String password, @WebParam(name = "email") String email, @WebParam(name = "rol") int rol) {
+        //TODO write your implementation code here:
+        Usuario u = new Usuario(nombre, user, password, email, rol);
+        
+        
+        try{
+           return  u.insertDB();
+            
+        }catch(Exception e){
+            
+        }
+        return null;
     }
     
     
