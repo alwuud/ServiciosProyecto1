@@ -17,7 +17,7 @@ import org.database.DataBaseConnection;
 public class Usuario {
     
     private String nombre, user, password, email;
-    private int rol;
+    private int rol, id;
 
     public Usuario(String nombre, String user, String password, String email, int rol){
         this.nombre= nombre;

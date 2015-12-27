@@ -20,7 +20,7 @@ public class Pregunta {
     private boolean resCorrecta;
     
     private String question,tiempo;
-    private int curso, dificultad;
+    private int curso, dificultad,id;
     private ArrayList<Respuesta> respuestas;
     
     /**

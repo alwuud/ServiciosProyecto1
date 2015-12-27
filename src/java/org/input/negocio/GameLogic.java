@@ -12,6 +12,7 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import org.business.classes.Carrera;
 import org.business.classes.Curso;
+import org.business.classes.Item;
 import org.business.classes.Pregunta;
 import org.business.classes.Usuario;
 
@@ -127,11 +128,28 @@ public class GameLogic {
         }
         return null;
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "addItem")
+    public Boolean addItem(@WebParam(name = "nombre") String nombre, @WebParam(name = "descripcion") String descripcion, @WebParam(name = "rareza") int rareza, @WebParam(name = "efectividad") int efectividad, @WebParam(name = "gana") int gana, @WebParam(name = "pierde") int pierde, @WebParam(name = "unUso") boolean unUso) {
+        //TODO write your implementation code here:
+        
+        Item i= new Item(nombre,descripcion,efectividad,rareza,gana,pierde,unUso);
+        
+        try{
+            return i.insertDB();
+        }catch(Exception e){
+            return false;
+        }
+       
+    }
     
     
     
     
-    
+     
     
 
  

@@ -63,12 +63,12 @@ public class Curso {
             dbConnection = new DataBaseConnection().getDBConnection();
             preparedStatement = dbConnection.prepareStatement(insertTableSQL);
 
-            preparedStatement.setInt(1, codigo);
-            preparedStatement.setInt(5, carrera);
-            preparedStatement.setBoolean(3, activo);
-            preparedStatement.setString(4, descripcion);
+            preparedStatement.setInt(1, getCodigo());
+            preparedStatement.setInt(5, getCarrera());
+            preparedStatement.setBoolean(3, isActivo());
+            preparedStatement.setString(4, getDescripcion());
             
-            preparedStatement.setString(2, nombre);
+            preparedStatement.setString(2, getNombre());
 
             // execute insert SQL stetement
             preparedStatement.executeUpdate();
@@ -94,6 +94,41 @@ public class Curso {
         }
         
         
+    }
+
+    /**
+     * @return the codigo
+     */
+    public int getCodigo() {
+        return codigo;
+    }
+
+    /**
+     * @return the carrera
+     */
+    public int getCarrera() {
+        return carrera;
+    }
+
+    /**
+     * @return the activo
+     */
+    public boolean isActivo() {
+        return activo;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @return the descripcion
+     */
+    public String getDescripcion() {
+        return descripcion;
     }
     
     

@@ -13,6 +13,8 @@ public class Respuesta {
    
     private String res;
     private boolean correcta;
+    private int id;
+    
     
     /**
      * 

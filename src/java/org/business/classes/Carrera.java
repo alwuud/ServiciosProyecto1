@@ -40,8 +40,8 @@ public class Carrera {
             dbConnection = new DataBaseConnection().getDBConnection();
             preparedStatement = dbConnection.prepareStatement(insertTableSQL);
 
-            preparedStatement.setInt(1, codigoCarrera);
-            preparedStatement.setString(2, nombre);
+            preparedStatement.setInt(1, getCodigoCarrera());
+            preparedStatement.setString(2, getNombre());
 
             // execute insert SQL stetement
             preparedStatement.executeUpdate();
@@ -65,6 +65,20 @@ public class Carrera {
             }
 
         }
+    }
+
+    /**
+     * @return the codigoCarrera
+     */
+    public int getCodigoCarrera() {
+        return codigoCarrera;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
     }
     
 }
