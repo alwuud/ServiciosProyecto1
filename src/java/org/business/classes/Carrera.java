@@ -6,6 +6,7 @@
 package org.business.classes;
 
 import java.sql.*;
+import java.util.ArrayList;
 import org.database.DataBaseConnection;
 
 /**
@@ -27,6 +28,8 @@ public class Carrera {
         this.nombre = nombre;
         
     }
+    
+    
     
     public boolean insertDB() throws SQLException{
        Connection dbConnection = null;

@@ -4,6 +4,9 @@
     <service name="GameLogic">
       <implementation-class>org.input.negocio.GameLogic</implementation-class>
     </service>
+    <service name="ResponseLogic">
+      <implementation-class>org.input.negocio.ResponseLogic</implementation-class>
+    </service>
   </services>
   <clients/>
 </jax-ws>
