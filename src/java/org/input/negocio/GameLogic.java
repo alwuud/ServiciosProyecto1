@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import org.business.classes.Avatar;
 import org.business.classes.Carrera;
 import org.business.classes.Curso;
 import org.business.classes.Item;
@@ -161,6 +162,23 @@ public class GameLogic {
         }
         
       
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "addAvatar")
+    public Boolean addAvatar(@WebParam(name = "nombre") String nombre, @WebParam(name = "usuario") int usuario) {
+        //TODO write your implementation code here:
+        Avatar a= new Avatar(nombre, usuario);
+        try{
+            return a.insertDB();
+        }catch(Exception e){
+            return false;
+            
+        }
+        
+        
     }
     
     
