@@ -180,6 +180,24 @@ public class GameLogic {
         
         
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "equiparItem")
+    public Boolean equiparItem(@WebParam(name = "avatar") int avatar, @WebParam(name = "usuario") int usuario, @WebParam(name = "item") int item) {
+        //TODO write your implementation code here:
+        Avatar a= new Avatar();
+        
+        
+        try{
+            return a.equiparItem(avatar, usuario, item);
+            
+        }catch(Exception e){
+            return false;
+        }
+        
+    }
     
     
     
