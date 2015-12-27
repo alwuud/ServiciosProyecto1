@@ -17,7 +17,7 @@ import org.database.DataBaseConnection;
 public class Avatar {
     
     private String nombre;
-    private int usuario;
+    private int usuario, id;
     
     
     

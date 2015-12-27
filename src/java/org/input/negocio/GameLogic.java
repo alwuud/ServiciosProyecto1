@@ -13,6 +13,7 @@ import javax.jws.WebParam;
 import org.business.classes.Avatar;
 import org.business.classes.Carrera;
 import org.business.classes.Curso;
+import org.business.classes.Dificultad;
 import org.business.classes.Item;
 import org.business.classes.Pregunta;
 import org.business.classes.Usuario;
@@ -193,6 +194,21 @@ public class GameLogic {
         try{
             return a.equiparItem(avatar, usuario, item);
             
+        }catch(Exception e){
+            return false;
+        }
+        
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "addDificultad")
+    public Boolean addDificultad(@WebParam(name = "nombre") String nombre, @WebParam(name = "experiencia") int experiencia) {
+        //TODO write your implementation code here:
+        Dificultad d= new Dificultad(nombre,experiencia);
+        try{
+            return d.insertDB();
         }catch(Exception e){
             return false;
         }
