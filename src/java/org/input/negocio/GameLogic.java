@@ -73,8 +73,9 @@ public class GameLogic {
             return nuevo.insertDB();
         }catch(Exception e){
             e.printStackTrace();
+            return false;
         }
-        return false;
+        
         
     }
 
@@ -102,13 +103,13 @@ public class GameLogic {
           return nueva.insertDB();
           
         }catch(Exception e){
-            e.printStackTrace();
+          return false;
             
         }
                
         
         
-       return false;
+      
     }
 
     /**
@@ -124,9 +125,9 @@ public class GameLogic {
            return  u.insertDB();
             
         }catch(Exception e){
-            
+            return false;
         }
-        return null;
+       
     }
 
     /**
@@ -144,6 +145,22 @@ public class GameLogic {
             return false;
         }
        
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "addItemUsuario")
+    public Boolean addItemUsuario(@WebParam(name = "item") int item, @WebParam(name = "usuario") int usuario) {
+        //TODO write your implementation code here:
+        Item i = new Item();
+        try{
+            return i.agregarItemUsuario(usuario, item);
+        }catch(Exception e){
+            return false;
+        }
+        
+      
     }
     
     

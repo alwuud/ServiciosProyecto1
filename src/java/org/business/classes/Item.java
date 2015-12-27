@@ -19,6 +19,12 @@ public class Item {
     private int efectividad, rareza, gana, pierde, id;
     private boolean unUsuo;
     
+    
+    
+    public Item(){
+        System.out.println("hello");
+        
+    }
     /**
      * 
      * @param nombre
@@ -91,6 +97,55 @@ public class Item {
         return unUsuo;
     }
     
+    /**
+     * 
+     * @param idUsuario
+     * @param idItem
+     * @return
+     * @throws SQLException 
+     */
+    
+    public boolean agregarItemUsuario(int idUsuario, int idItem) throws SQLException{
+             Connection dbConnection = null;
+        PreparedStatement preparedStatement = null;
+
+        String insertTableSQL = "INSERT INTO ITEM_USUARIO"
+                + "( id_usuario, id_item ) VALUES"
+                + "(?,?)";
+
+        try {
+            dbConnection = new DataBaseConnection().getDBConnection();
+            preparedStatement = dbConnection.prepareStatement(insertTableSQL);
+
+            preparedStatement.setInt(1, idUsuario);
+            preparedStatement.setInt(2, idItem);
+            
+          
+            
+
+            // execute insert SQL stetement
+            preparedStatement.executeUpdate();
+            dbConnection.close();
+
+            return true;
+
+        } catch (SQLException e) {
+
+            System.out.println(e.getMessage());
+            return false;
+
+        } finally {
+
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+
+            if (dbConnection != null) {
+                dbConnection.close();
+            }
+
+        } 
+    }
     
     public boolean insertDB() throws SQLException{
             Connection dbConnection = null;
