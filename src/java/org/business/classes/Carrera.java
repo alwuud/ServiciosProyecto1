@@ -18,7 +18,8 @@ public class Carrera {
     private int codigoCarrera;
     private String nombre;
     
-    Carrera(){
+    
+    public Carrera(){
         codigoCarrera=0;
         nombre= "Reposteria";
     }
@@ -30,7 +31,56 @@ public class Carrera {
     }
     
     
-    
+    public String getCarreraName(int code) throws SQLException{
+        Connection dbConnection = null;
+        PreparedStatement preparedStatement = null;
+
+        String insertTableSQL = "select nombre FROM CARRERA "+
+               " WHERE codigo=?";
+                
+
+        try {
+            dbConnection = new DataBaseConnection().getDBConnection();
+            preparedStatement = dbConnection.prepareStatement(insertTableSQL);
+
+            preparedStatement.setInt(1, code);
+            
+            ResultSet rs;
+            rs=  preparedStatement.executeQuery();
+            String retorno="";
+            
+            while(rs.next()){
+                
+                retorno= rs.getString("nombre");
+                
+                
+            }
+
+            // execute insert SQL stetement
+           
+            dbConnection.close();
+            
+            return retorno;
+            
+
+        } catch (SQLException e) {
+
+            System.out.println(e.getMessage());
+            
+        } finally {
+
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+
+            if (dbConnection != null) {
+                dbConnection.close();
+            }
+            
+            
+        }
+        return null;
+    }
     public boolean insertDB() throws SQLException{
        Connection dbConnection = null;
         PreparedStatement preparedStatement = null;

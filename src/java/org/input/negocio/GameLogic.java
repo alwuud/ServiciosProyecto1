@@ -216,6 +216,22 @@ public class GameLogic {
     }
     
     
+     /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getCarrera")
+    public String getCarrera(@WebParam(name = "codigo") int codigo) {
+        //TODO write your implementation code here:
+        try{
+            Carrera n= new Carrera();
+            return n.getCarreraName(codigo);
+            
+        }catch(Exception e){
+            return null;
+        }
+    }
+    
+    
     
     
      

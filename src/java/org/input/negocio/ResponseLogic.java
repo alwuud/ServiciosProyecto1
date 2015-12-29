@@ -14,6 +14,10 @@ import javax.jws.soap.SOAPBinding.ParameterStyle;
 import javax.jws.soap.SOAPBinding.Style;
 import javax.jws.soap.SOAPBinding.Use;
 import org.output.classes.Carrera;
+import org.output.classes.Curso;
+import org.output.classes.Dificultad;
+import org.output.classes.Pregunta;
+import org.output.classes.Respuesta;
 import org.output.classes.Retornos;
 
 /**
@@ -37,6 +41,60 @@ public class ResponseLogic {
         }
         return null;
     }
+    
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "hola")
+    public Pregunta hola() {
+        //TODO write your implementation code here:
+        return null;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "adios")
+    public Respuesta adios() {
+        //TODO write your implementation code here:
+        return null;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getCurso")
+    public ArrayList<Curso> getCurso(@WebParam(name = "carrera") int carrera) {
+        //TODO write your implementation code here:
+        
+        
+        try{
+            return new Retornos().getCurso(carrera);
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getDificultades")
+    public ArrayList<Dificultad> getDificultades() {
+        //TODO write your implementation code here:
+        try{
+            return new Retornos().getDificultades();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    
+
+   
     
     
     
