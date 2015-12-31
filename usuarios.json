@@ -1,0 +1,57 @@
+{
+ "jugadores": [
+ {
+ "rol": "Jugador",
+ "password": "passwordfacil",
+ "email": "HolaMundo@mundirijillo.com",
+ "avatares": [
+ {
+ "nombre": "Pedrito",
+ "equipo1": 1,
+ "equipo2": 2
+ },{
+ "nombre": "Rudolph",
+ "equipo1": 1,
+ "equipo2": null
+ }
+ ],
+ "usuario": "HolaMundo"
+ },
+ {
+ "rol": "Moderador",
+ "password": "12345678",
+ "usuario": "KillEmAll",
+ "email": "elpanditaoso@hotmail.com",
+ "avatares": [
+ {
+ "nombre": "Newton",
+ "equipo1": null,
+ "equipo2": null
+ },{
+ "nombre": "Einstein",
+ "equipo1": 1,
+ "equipo2": 6
+ }
+ ]
+ },
+ {
+ "rol": "Administrador",
+ "usuario": "Usuario1",
+ "password": "noposmipasword",
+ "email": "elmejorde.todos@gmail.com"
+ },
+ {
+ "usuario": "EsteUsuario",
+ "rol": "Jugador",
+ "password": "testingtesting",
+ "email": "whoami@correo.com",
+ "avatares": [
+ {
+ "nombre": "Edmundo",
+ "equipo1": null,
+ "equipo2": null
+ }
+ ]
+ }
+ ]
+}

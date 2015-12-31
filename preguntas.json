@@ -1,0 +1,69 @@
+{
+ "dificultades": [
+ {
+ "nombre": "Facil",
+ "EXP": 70
+ },
+ {
+ "nombre": "Intermedio",
+ "EXP": 150
+ },
+ {
+ "nombre": "Dificil",
+ "EXP": 500
+ },
+ {
+ "nombre": "Muy Dificil",
+ "EXP": 800
+ }
+ ],
+ "preguntas": [
+ {
+ "curso": 770,
+ "pregunta": "Es un pilar de la Programacion Orientada a Objetos",
+ "nivel": "Facil",
+ "respuestas": [
+ {
+ "opcion": "Polimorfismo",
+ "correcta": true
+ },
+ {
+ "opcion": "Consistencia",
+ "correcta": false
+ },
+ {
+ "opcion": "Solidez",
+ "correcta": false
+ },
+ {
+ "opcion": "Concurrencia",
+ "correcta": false
+ }
+ ]
+ },
+ {
+ "curso": 771,
+ "pregunta": "SENTENCIA SQL QUE INDICA CONDICION PARA CONSULTAS
+AGREGADAS.",
+ "nivel": "Intermedio",
+ "respuestas": [
+ {
+ "opcion": "WHERE",
+ "correcta": false
+ },
+ {
+ "opcion": "VALUES",
+ "correcta": false
+ },
+ {
+ "opcion": "HAVING",
+ "correcta": true
+ },
+ {
+ "opcion": "ORDER BY",
+ "correcta": false
+ }
+ ]
+ }
+ ]
+}

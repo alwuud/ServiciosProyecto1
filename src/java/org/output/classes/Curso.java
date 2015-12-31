@@ -14,10 +14,23 @@ public class Curso {
     private boolean activo;
     private String nombre, descripcion = null;
     
-    public Curso(int codigo, int carrera, String nombre, boolean activo, String descripcion){
-        
+    
+    
+    /**
+     * 
+     * @param codigo
+     * @param carrera
+     * @param activo
+     * @param nombre
+     * @param descripcion 
+     */
+   public Curso(int codigo, int carrera,  String nombre,boolean activo, String descripcion){
+        this.codigo= codigo;
+        this.carrera= carrera;
+        this.activo= activo;
+        this.nombre= nombre;
+        this.descripcion= descripcion;
     }
-
     /**
      * @return the codigo
      */

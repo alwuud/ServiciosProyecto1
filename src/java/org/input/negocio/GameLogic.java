@@ -85,9 +85,9 @@ public class GameLogic {
      * Web service operation
      */
     @WebMethod(operationName = "addPregunta")
-    public Boolean addPregunta(@WebParam(name = "pregunta") String pregunta, @WebParam(name = "dias") int dias, @WebParam(name = "horas") int horas, @WebParam(name = "minutos") int minutos, @WebParam(name = "curso") int curso, @WebParam(name = "dificultad") int dificultad, @WebParam(name = "respuestas") String[] respuestas) {
+    public Boolean addPregunta(@WebParam(name = "pregunta") String pregunta, @WebParam(name = "tiempo") String tiempo, @WebParam(name = "curso") int curso, @WebParam(name = "dificultad") int dificultad, @WebParam(name = "respuestas") String[] respuestas) {
         //TODO write your implementation code here:
-        Pregunta nueva = new Pregunta(pregunta, dias, horas, minutos,curso,dificultad);
+        Pregunta nueva = new Pregunta(pregunta,tiempo,curso,dificultad);
         
         String res[];
         

@@ -53,6 +53,47 @@ public class Pregunta {
         
     }
     
+    public Pregunta(String question, String tiempo, int curso, int dificultad){
+        resCorrecta=false;
+        //Inicializando arraylist de respuestas
+        
+         respuestas= new ArrayList<Respuesta>();
+         
+        //calculando las horas totales, del tiempo de respuesta
+        
+       
+        
+        
+        //asignaciones
+        
+        this.question= question;
+        this.tiempo=  tiempo;
+        this.curso= curso;
+        this.dificultad= dificultad;
+        
+        
+    }
+    
+    public Pregunta(String question, int curso, int dificultad){
+        resCorrecta=false;
+        //Inicializando arraylist de respuestas
+        
+         respuestas= new ArrayList<Respuesta>();
+         
+        //calculando las horas totales, del tiempo de respuesta
+        
+       
+        
+        
+        //asignaciones
+        
+        this.question= question;
+        this.tiempo=  "00:01:00";
+        this.curso= curso;
+        this.dificultad= dificultad;
+        
+        
+    }
     public boolean addRespuesta(String res, boolean correcta){
         // resCorrecta indica si ya se ingreso la respuesta correcta
         // si resCorrecta es falsa quiere decir que aun no, en caso contrario

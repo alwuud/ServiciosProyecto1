@@ -1,0 +1,37 @@
+{
+ "fecha": "25/12/2015",
+ "cursos": [
+ {
+ "carrera": "Area Comun",
+ "codigo carrera": "00",
+ "cursos": [
+ {
+ "id": "001",
+ "nombre": "IPC1",
+ "activo": true
+ },
+ {
+ "id": "066",
+ "nombre": "sEGURIDA DE REDESs",
+ "activo": true
+ }
+ ]
+ },
+ {
+ "carrera": "Ingenieria en Sistemas",
+ "codigo carrera": "09",
+ "cursos": [
+ {
+ "id": "771",
+ "nombre": "IPC2",
+ "activo": true
+ },
+ {
+ "id": "7777",
+ "nombre": "Compi 3",
+ "activo": false
+ }
+ ]
+ }
+ ]
+}

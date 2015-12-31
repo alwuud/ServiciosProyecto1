@@ -19,6 +19,7 @@ import org.output.classes.Dificultad;
 import org.output.classes.Pregunta;
 import org.output.classes.Respuesta;
 import org.output.classes.Retornos;
+import org.output.classes.Usuario;
 
 /**
  *
@@ -86,6 +87,50 @@ public class ResponseLogic {
         //TODO write your implementation code here:
         try{
             return new Retornos().getDificultades();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "checkPassword")
+    public Usuario checkPassword(@WebParam(name = "user") String user, @WebParam(name = "password") String password) {
+        //TODO write your implementation code here:
+        
+        
+        try{
+            return new Retornos().checkPassword(user, password);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getExperiencia")
+    public Integer getExperiencia(@WebParam(name = "id_usuario") int id_usuario) {
+        //TODO write your implementation code here:
+        try{
+            return new Retornos().Exeriencia(id_usuario);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "numAvatares")
+    public Integer numAvatares(@WebParam(name = "id_usuario") int id_usuario) {
+        //TODO write your implementation code here:
+        try{
+            return new Retornos().numAvatares(id_usuario);
         }catch(Exception e){
             e.printStackTrace();
         }

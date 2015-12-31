@@ -1,0 +1,32 @@
+{
+ "items": [
+ {
+ "nombre": "Ocarina de los Vientos",
+ "descripcion": "Controla los vientos de todos los
+tiempos.",
+ "rareza" : 10,
+ "efectividad": 50,
+ "bonus_gana" : 3,
+ "bonus_pierde" : 0,
+"tipo" : "Un uso"
+ },
+ {
+ "nombre": "Pocion polijugos",
+ "descripcion": "Una pocion rara, realmente rara.",
+ "rareza" : 75,
+ "efectividad": 30,
+ "bonus_gana" : 2,
+ "bonus_pierde" : -2,
+ "tipo" : "Un uso"
+ },
+ {
+ "nombre": "Escencia de Nada",
+ "descripcion": "Simplemente un estorbo.",
+ "rareza" : 96,
+ "efectividad": 100,
+ "bonus_gana" : 1,
+ "bonus_pierde" : -1,
+"tipo": "Equipo"
+ }
+ ]
+}

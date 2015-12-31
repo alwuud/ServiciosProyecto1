@@ -7,6 +7,7 @@ package org.business.classes;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.database.DataBaseConnection;
 
@@ -28,7 +29,57 @@ public class Usuario {
     }    
     
     
-    
+    public int insertDBint() throws SQLException{
+         
+                 Connection dbConnection = null;
+        PreparedStatement preparedStatement = null;
+
+        String insertTableSQL = "INSERT INTO USUARIO"
+                + "( nombre, loginUser, pass, email,id_rol) VALUES"
+                + "(?,?,?,?,?) returning id_usuario";
+
+        try {
+            dbConnection = new DataBaseConnection().getDBConnection();
+            preparedStatement = dbConnection.prepareStatement(insertTableSQL);
+
+           
+            preparedStatement.setString(1, nombre);
+            preparedStatement.setString(2, user);
+            preparedStatement.setString(3, password);
+            preparedStatement.setString(4, email);
+            preparedStatement.setInt(5, rol);
+            // execute insert SQL stetement
+            ResultSet rs;
+            rs=preparedStatement.executeQuery();
+            int retorno=0;
+            while(rs.next()){
+                retorno= rs.getInt("id_usuario");
+            }
+            
+            dbConnection.close();
+            return retorno;
+
+            
+
+        } catch (SQLException e) {
+
+            System.out.println(e.getMessage());
+          
+
+        } finally {
+
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+
+            if (dbConnection != null) {
+                dbConnection.close();
+            }
+
+        }
+        return 0;
+        
+    }
     public boolean insertDB() throws SQLException{
         Connection dbConnection = null;
         PreparedStatement preparedStatement = null;
