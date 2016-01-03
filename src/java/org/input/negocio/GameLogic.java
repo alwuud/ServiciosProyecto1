@@ -37,7 +37,7 @@ public class GameLogic {
      * @return 
      */
     @WebMethod(operationName = "nuevaCarrera")
-    public Boolean nuevaCarrera(@WebParam(name = "codigo") int codigo, @WebParam(name = "nombre") String nombre)  {
+    public boolean nuevaCarrera(@WebParam(name = "codigo") int codigo, @WebParam(name = "nombre") String nombre)  {
         //TODO write your implementation code here:
         Carrera nueva = new Carrera(codigo, nombre);
         
@@ -64,7 +64,7 @@ public class GameLogic {
      * @return 
      */
     @WebMethod(operationName = "addCurso")
-    public Boolean addCurso(@WebParam(name = "codigo") int codigo, @WebParam(name = "nombre") String nombre, @WebParam(name = "activo") boolean activo, @WebParam(name = "descripcion") String descripcion, @WebParam(name = "carrera") int carrera)  {
+    public boolean addCurso(@WebParam(name = "codigo") int codigo, @WebParam(name = "nombre") String nombre, @WebParam(name = "activo") boolean activo, @WebParam(name = "descripcion") String descripcion, @WebParam(name = "carrera") int carrera)  {
         //TODO write your implementation code here:
         Curso nuevo=  new Curso(codigo, carrera,activo, nombre, descripcion);
         
@@ -85,7 +85,7 @@ public class GameLogic {
      * Web service operation
      */
     @WebMethod(operationName = "addPregunta")
-    public Boolean addPregunta(@WebParam(name = "pregunta") String pregunta, @WebParam(name = "tiempo") String tiempo, @WebParam(name = "curso") int curso, @WebParam(name = "dificultad") int dificultad, @WebParam(name = "respuestas") String[] respuestas) {
+    public boolean addPregunta(@WebParam(name = "pregunta") String pregunta, @WebParam(name = "tiempo") String tiempo, @WebParam(name = "curso") int curso, @WebParam(name = "dificultad") int dificultad, @WebParam(name = "respuestas") String[] respuestas) {
         //TODO write your implementation code here:
         Pregunta nueva = new Pregunta(pregunta,tiempo,curso,dificultad);
         
@@ -118,7 +118,7 @@ public class GameLogic {
      * Web service operation
      */
     @WebMethod(operationName = "addUser")
-    public Boolean addUser(@WebParam(name = "nombre") String nombre, @WebParam(name = "user") String user, @WebParam(name = "password") String password, @WebParam(name = "email") String email, @WebParam(name = "rol") int rol) {
+    public boolean addUser(@WebParam(name = "nombre") String nombre, @WebParam(name = "user") String user, @WebParam(name = "password") String password, @WebParam(name = "email") String email, @WebParam(name = "rol") int rol) {
         //TODO write your implementation code here:
         Usuario u = new Usuario(nombre, user, password, email, rol);
         
@@ -136,7 +136,7 @@ public class GameLogic {
      * Web service operation
      */
     @WebMethod(operationName = "addItem")
-    public Boolean addItem(@WebParam(name = "nombre") String nombre, @WebParam(name = "descripcion") String descripcion, @WebParam(name = "rareza") int rareza, @WebParam(name = "efectividad") int efectividad, @WebParam(name = "gana") int gana, @WebParam(name = "pierde") int pierde, @WebParam(name = "unUso") boolean unUso) {
+    public boolean addItem(@WebParam(name = "nombre") String nombre, @WebParam(name = "descripcion") String descripcion, @WebParam(name = "rareza") int rareza, @WebParam(name = "efectividad") int efectividad, @WebParam(name = "gana") int gana, @WebParam(name = "pierde") int pierde, @WebParam(name = "unUso") boolean unUso) {
         //TODO write your implementation code here:
         
         Item i= new Item(nombre,descripcion,efectividad,rareza,gana,pierde,unUso);
@@ -153,7 +153,7 @@ public class GameLogic {
      * Web service operation
      */
     @WebMethod(operationName = "addItemUsuario")
-    public Boolean addItemUsuario(@WebParam(name = "item") int item, @WebParam(name = "usuario") int usuario) {
+    public boolean addItemUsuario(@WebParam(name = "item") int item, @WebParam(name = "usuario") int usuario) {
         //TODO write your implementation code here:
         Item i = new Item();
         try{
@@ -169,7 +169,7 @@ public class GameLogic {
      * Web service operation
      */
     @WebMethod(operationName = "addAvatar")
-    public Boolean addAvatar(@WebParam(name = "nombre") String nombre, @WebParam(name = "usuario") int usuario) {
+    public boolean addAvatar(@WebParam(name = "nombre") String nombre, @WebParam(name = "usuario") int usuario) {
         //TODO write your implementation code here:
         Avatar a= new Avatar(nombre, usuario);
         try{
@@ -186,7 +186,7 @@ public class GameLogic {
      * Web service operation
      */
     @WebMethod(operationName = "equiparItem")
-    public Boolean equiparItem(@WebParam(name = "avatar") int avatar, @WebParam(name = "usuario") int usuario, @WebParam(name = "item") int item) {
+    public boolean equiparItem(@WebParam(name = "avatar") int avatar, @WebParam(name = "usuario") int usuario, @WebParam(name = "item") int item) {
         //TODO write your implementation code here:
         Avatar a= new Avatar();
         
@@ -204,7 +204,7 @@ public class GameLogic {
      * Web service operation
      */
     @WebMethod(operationName = "addDificultad")
-    public Boolean addDificultad(@WebParam(name = "nombre") String nombre, @WebParam(name = "experiencia") int experiencia) {
+    public boolean addDificultad(@WebParam(name = "nombre") String nombre, @WebParam(name = "experiencia") int experiencia) {
         //TODO write your implementation code here:
         Dificultad d= new Dificultad(nombre,experiencia);
         try{
@@ -229,6 +229,24 @@ public class GameLogic {
         }catch(Exception e){
             return null;
         }
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "changePassword")
+    public boolean changePassword(@WebParam(name = "idUsuario") int idUsuario, @WebParam(name = "parameter1") String parameter1) {
+        //TODO write your implementation code here:
+        
+        try{
+            Usuario u= new Usuario();
+            return u.changePassword(idUsuario, parameter1);
+           
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+       
     }
     
     

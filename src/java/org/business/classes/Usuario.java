@@ -19,6 +19,8 @@ public class Usuario {
     
     private String nombre, user, password, email;
     private int rol, id;
+    
+    public Usuario() {};
 
     public Usuario(String nombre, String user, String password, String email, int rol){
         this.nombre= nombre;
@@ -122,6 +124,46 @@ public class Usuario {
         }
         
            
+    }
+    
+    public boolean changePassword(int idUser, String nuevo) throws SQLException{
+        Connection dbConnection = null;
+        PreparedStatement preparedStatement = null;
+
+        String insertTableSQL = "UPDATE USUARIO "
+                + "SET pass= ? "
+                + " WHERE id_usuario= ?";
+
+        try {
+            dbConnection = new DataBaseConnection().getDBConnection();
+            preparedStatement = dbConnection.prepareStatement(insertTableSQL);
+
+           
+            preparedStatement.setString(1, nuevo);
+           
+            preparedStatement.setInt(2, idUser);
+            // execute insert SQL stetement
+            preparedStatement.executeUpdate();
+            dbConnection.close();
+
+            return true;
+
+        } catch (SQLException e) {
+
+            System.out.println(e.getMessage());
+            return false;
+
+        } finally {
+
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+
+            if (dbConnection != null) {
+                dbConnection.close();
+            }
+
+        }
     }
     /**
      * @return the nombre

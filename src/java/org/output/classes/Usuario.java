@@ -11,18 +11,36 @@ package org.output.classes;
  */
 public class Usuario {
     private String nombre, user, password, email;
-    private int rol, id;
+    private int rol, id, exp;
     
     
-    public Usuario(String nombre, String user, String password, String email, int rol, int id){
+    public Usuario(String nombre, String user, String password, String email, int rol, int id, int experiencia){
         this.nombre= nombre;
         this.user= user;
         this.password= password;
         this.email= email;
         this.rol=rol;
         this.id= id;
+        this.exp= experiencia;
     }
-
+        
+/**
+ * 
+ * @return 
+ */
+    public int getExp(){
+        return exp;
+        
+    }
+    
+    
+    
+    public void setExp(int exp){
+        this.exp= exp;
+    }
+    
+    
+    
     /**
      * @return the nombre
      */

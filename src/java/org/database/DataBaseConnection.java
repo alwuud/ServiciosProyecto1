@@ -18,7 +18,7 @@ import java.sql.SQLException;
         //‐‐ DATOS DE STRING CONN ‐‐
                 private static final String cHOST = "localhost";
             private static final String cPORT = "5432"; //Postgresql PORT
-            private static final String cDATABASE = "Proyecto1Diciembre";
+            private static final String cDATABASE = "Carajos";
         // ‐‐ DATOS DE USUARIO DE BD ‐‐ //
             private static final String cUSER = "postgres";
             private static final String cPASSWORD = "zcubeRules_2005";

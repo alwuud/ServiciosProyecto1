@@ -13,9 +13,11 @@ import javax.jws.soap.*;
 import javax.jws.soap.SOAPBinding.ParameterStyle;
 import javax.jws.soap.SOAPBinding.Style;
 import javax.jws.soap.SOAPBinding.Use;
+import org.output.classes.Avatar;
 import org.output.classes.Carrera;
 import org.output.classes.Curso;
 import org.output.classes.Dificultad;
+import org.output.classes.Item;
 import org.output.classes.Pregunta;
 import org.output.classes.Respuesta;
 import org.output.classes.Retornos;
@@ -113,28 +115,55 @@ public class ResponseLogic {
      * Web service operation
      */
     @WebMethod(operationName = "getExperiencia")
-    public Integer getExperiencia(@WebParam(name = "id_usuario") int id_usuario) {
+    public int  getExperiencia(@WebParam(name = "id_usuario") int id_usuario) {
         //TODO write your implementation code here:
         try{
             return new Retornos().Exeriencia(id_usuario);
         }catch(Exception e){
             e.printStackTrace();
         }
-        return null;
+        return 0;
     }
 
     /**
      * Web service operation
      */
     @WebMethod(operationName = "numAvatares")
-    public Integer numAvatares(@WebParam(name = "id_usuario") int id_usuario) {
+    public int numAvatares(@WebParam(name = "id_usuario") int id_usuario) {
         //TODO write your implementation code here:
         try{
             return new Retornos().numAvatares(id_usuario);
         }catch(Exception e){
             e.printStackTrace();
         }
-        return null;
+        return 0;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getItemUsuario")
+    public ArrayList<Item> getItemUsuario(@WebParam(name = "idUsuer") int idUsuer) {
+        //TODO write your implementation code here:
+        try{
+            return new Retornos().getItemsUsuario(idUsuer);
+        }catch(Exception e){
+            return null;
+        }
+        
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getAvataresUsuario")
+    public ArrayList<Avatar> getAvataresUsuario(@WebParam(name = "idUser") int idUser) {
+        //TODO write your implementation code here:
+        try{
+            return new Retornos().getAvataresUsuario(idUser);
+        }catch(Exception e){
+            return null;
+        }
     }
     
     

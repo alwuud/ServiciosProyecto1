@@ -18,10 +18,10 @@ public class Tester {
     
     
     public static void main(String [] args){
-        JsonItems nuevo = new JsonItems();
+        JsonUsuarios nuevo = new JsonUsuarios();
         InputText texto= new InputText();
         try {
-            nuevo.lecturaArchivo(texto.getPlainText("items.json"));
+            nuevo.lecturaArchivo(texto.getPlainText("usuarios.json"));
         } catch (SQLException ex) {
             Logger.getLogger(Tester.class.getName()).log(Level.SEVERE, null, ex);
         }
