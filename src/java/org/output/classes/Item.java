@@ -11,7 +11,7 @@ package org.output.classes;
  */
 public class Item {
     private String nombre, descripcion;
-    private int efectividad, rareza, gana, pierde, id, utilizado;
+    private int efectividad, rareza, gana, pierde, id, utilizado, idItem;
     private boolean unUsuo;
     /**
      * 
@@ -26,7 +26,7 @@ public class Item {
      * @param utilizado 
      */
      public Item(String nombre, String descripcion, int efectividad,
-            int rareza, int gana, int pierde, boolean unUso, int id, int utilizado){
+            int rareza, int gana, int pierde, boolean unUso, int id, int utilizado, int idItem){
         this.nombre= nombre;
         this.descripcion= descripcion;
         this.efectividad= efectividad;
@@ -36,6 +36,7 @@ public class Item {
         this.unUsuo= unUso;
         this.utilizado= utilizado;
         this.id= id;
+        this.idItem= idItem;
     }
 
     /**
@@ -162,6 +163,20 @@ public class Item {
      */
     public void setUnUsuo(boolean unUsuo) {
         this.unUsuo = unUsuo;
+    }
+
+    /**
+     * @return the idItem
+     */
+    public int getIdItem() {
+        return idItem;
+    }
+
+    /**
+     * @param idItem the idItem to set
+     */
+    public void setIdItem(int idItem) {
+        this.idItem = idItem;
     }
     
 }

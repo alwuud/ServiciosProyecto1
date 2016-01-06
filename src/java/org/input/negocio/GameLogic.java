@@ -186,13 +186,13 @@ public class GameLogic {
      * Web service operation
      */
     @WebMethod(operationName = "equiparItem")
-    public boolean equiparItem(@WebParam(name = "avatar") int avatar, @WebParam(name = "usuario") int usuario, @WebParam(name = "item") int item) {
+    public boolean equiparItem(@WebParam(name = "avatar") int avatar,  @WebParam(name = "item") int item) {
         //TODO write your implementation code here:
         Avatar a= new Avatar();
         
         
         try{
-            return a.equiparItem(avatar, usuario, item);
+            return a.equiparItem(avatar,  item);
             
         }catch(Exception e){
             return false;
@@ -247,6 +247,38 @@ public class GameLogic {
             return false;
         }
        
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "descartarItem")
+    public boolean descartarItem(@WebParam(name = "idItemUsuario") int idItemUsuario) {
+        //TODO write your implementation code here:
+        
+        try{
+            return new Item().descartarItem(idItemUsuario);
+            
+        }catch(Exception e){
+            
+            return false;
+            
+        }
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "desequiparItem")
+    public boolean desequiparItem(@WebParam(name = "idItemUsuario") int idItemUsuario) {
+        //TODO write your implementation code here:
+        
+        try{
+            return new Avatar().desequiparItem(idItemUsuario);
+            
+        }catch(Exception e){
+            return false;
+        }
     }
     
     

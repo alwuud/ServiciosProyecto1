@@ -147,6 +147,47 @@ public class Item {
         } 
     }
     
+    public boolean descartarItem(int idItemUsuario) throws SQLException{
+           Connection dbConnection = null;
+        PreparedStatement preparedStatement = null;
+
+        String insertTableSQL = "DELETE FROM ITEM_USUARIO "
+                + " WHERE id= ?";
+
+        try {
+            dbConnection = new DataBaseConnection().getDBConnection();
+            preparedStatement = dbConnection.prepareStatement(insertTableSQL);
+
+            
+            preparedStatement.setInt(1, idItemUsuario);
+          
+            
+
+            // execute insert SQL stetement
+            preparedStatement.executeUpdate();
+            dbConnection.close();
+
+            return true;
+
+        } catch (SQLException e) {
+
+            System.out.println(e.getMessage());
+            return false;
+
+        } finally {
+
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+
+            if (dbConnection != null) {
+                dbConnection.close();
+            }
+
+        }
+        
+    }
+    
     public boolean insertDB() throws SQLException{
             Connection dbConnection = null;
         PreparedStatement preparedStatement = null;

@@ -128,6 +128,45 @@ public class Avatar {
     public int getUsuario() {
         return usuario;
     }
+    
+    public boolean desequiparItem(int idItemUsuario) throws SQLException{
+            Connection dbConnection = null;
+        PreparedStatement preparedStatement = null;
+
+        String insertTableSQL = "UPDATE ITEM_USUARIO "
+                + "SET id_avatar= null where id= ?";
+
+        try {
+            dbConnection = new DataBaseConnection().getDBConnection();
+            preparedStatement = dbConnection.prepareStatement(insertTableSQL);
+
+            preparedStatement.setInt(1, idItemUsuario);
+           
+            
+
+            // execute insert SQL stetement
+            preparedStatement.executeUpdate();
+            dbConnection.close();
+
+            return true;
+
+        } catch (SQLException e) {
+
+            System.out.println(e.getMessage());
+            return false;
+
+        } finally {
+
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+
+            if (dbConnection != null) {
+                dbConnection.close();
+            }
+
+        }
+    }
    
     public boolean equiparItem(int avat, int usuario, int item) throws SQLException{
        // return true;\
@@ -135,8 +174,9 @@ public class Avatar {
         PreparedStatement preparedStatement = null;
 
         String insertTableSQL = "UPDATE ITEM_USUARIO "
-                + "SET id_avatar=? " + "WHERE id_usuario= ? and id_item= ?  and "
-                + "(select count(*) from item_usuario where id_avatar= ? ) <2";
+                + "SET id_avatar=? " + "WHERE id in (select id from ITEM_USUARIO WHERE id_avatar is null " + 
+                 " and id_usuario= ? and id_item= ?  and " 
+                + "(select count(*) from item_usuario where id_avatar= ? ) <2  LIMIT 1 )";
 
         try {
             dbConnection = new DataBaseConnection().getDBConnection();
@@ -174,7 +214,47 @@ public class Avatar {
     }
     
     
-    
+     public boolean equiparItem(int avat,  int item) throws SQLException{
+       // return true;\
+           Connection dbConnection = null;
+        PreparedStatement preparedStatement = null;
+
+        String insertTableSQL = "UPDATE ITEM_USUARIO "
+                + "SET id_avatar=? " + "WHERE id=? ";
+
+        try {
+            dbConnection = new DataBaseConnection().getDBConnection();
+            preparedStatement = dbConnection.prepareStatement(insertTableSQL);
+
+            preparedStatement.setInt(1, avat);
+            preparedStatement.setInt(2, item);
+            
+            
+
+            // execute insert SQL stetement
+            preparedStatement.executeUpdate();
+            dbConnection.close();
+
+            return true;
+
+        } catch (SQLException e) {
+
+            System.out.println(e.getMessage());
+            return false;
+
+        } finally {
+
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+
+            if (dbConnection != null) {
+                dbConnection.close();
+            }
+
+        }
+        
+    }
     
     
     

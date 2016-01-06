@@ -23,6 +23,7 @@ public class Retornos {
          Connection dbConnection = null;
         PreparedStatement preparedStatement = null;
         ArrayList<Avatar> c= new ArrayList<Avatar>();
+        ArrayList<Item> i= null;
         
         String insertTableSQL = "SELECT nombre, id_avatar FROM AVATAR " +
                  " WHERE id_usuario=? ";
@@ -39,8 +40,19 @@ public class Retornos {
             ResultSet rs;
             rs= preparedStatement.executeQuery();
             while(rs.next()){
-                c.add( new Avatar(rs.getString("nombre"),rs.getInt("id_avatar")));
                 
+                Avatar a= new Avatar(rs.getString("nombre"),rs.getInt("id_avatar"));
+                i= this.getItemsAvatar(a.getId());
+                for(int j=0; j< i.size(); j++){
+                    if(j==0){
+                        a.setUno(i.get(j));
+                    }else{
+                        a.setDos(i.get(j));
+                    }
+                }
+                c.add(a );
+                i= null;
+
             }
             
             dbConnection.close();
@@ -68,7 +80,7 @@ public class Retornos {
         return null;
     }
     
-    public ArrayList<Item> getItemsUsuario(int idUser) throws SQLException{
+        public ArrayList<Item> getItemsUsuario(int idUser) throws SQLException{
         Connection dbConnection = null;
         PreparedStatement preparedStatement = null;
         ArrayList<Item> c= new ArrayList<Item>();
@@ -98,11 +110,141 @@ public class Retornos {
                 int gana= rs.getInt("gana");
                 int pierde= rs.getInt("pierde");
                 int utilizado= rs.getInt("utilizado");
-                int id= rs.getInt("id_item");
+                int idItem= rs.getInt("id_item");
+                int id= rs.getInt("id");
                 boolean unUso= rs.getBoolean("unUso");
                 
                 
-                c.add(new Item(nombre,descripcion, efectividad,rareza,gana, pierde,unUso,id,utilizado));
+                c.add(new Item(nombre,descripcion, efectividad,rareza,gana, pierde,unUso,id,utilizado, idItem));
+                
+            }
+            
+            dbConnection.close();
+            return c;
+            
+
+           
+
+        } catch (SQLException e) {
+
+            System.out.println(e.getMessage());
+            
+
+        } finally {
+
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+
+            if (dbConnection != null) {
+                dbConnection.close();
+            }
+
+        }
+        return null;
+    }
+        
+        
+    public ArrayList<Item> getItemsUsuarioLibres(int idUser) throws SQLException{
+        Connection dbConnection = null;
+        PreparedStatement preparedStatement = null;
+        ArrayList<Item> c= new ArrayList<Item>();
+        
+        String insertTableSQL = "select * from ITEM "+
+                                " INNER JOIN ITEM_USUARIO "+
+                                "ON  ITEM.id_item = ITEM_USUARIO.id_item " +
+                            " where ITEM_USUARIO.id_usuario= ? and ITEM_USUARIO.id_avatar is null";
+
+        try {
+            dbConnection = new DataBaseConnection().getDBConnection();
+            
+            
+            preparedStatement = dbConnection.prepareStatement(insertTableSQL);
+
+            preparedStatement.setInt(1, idUser);
+            
+
+            // execute insert SQL stetement
+            ResultSet rs;
+            rs= preparedStatement.executeQuery();
+            while(rs.next()){
+                String nombre= rs.getString("nombre");
+                String descripcion= rs.getString("descripcion");
+                int efectividad= rs.getInt("efectividad");
+                int rareza= rs.getInt("rareza");
+                int gana= rs.getInt("gana");
+                int pierde= rs.getInt("pierde");
+                int utilizado= rs.getInt("utilizado");
+                int idItem= rs.getInt("id_item");
+                int id= rs.getInt("id");
+                boolean unUso= rs.getBoolean("unUso");
+                
+                
+                c.add(new Item(nombre,descripcion, efectividad,rareza,gana, pierde,unUso,id,utilizado, idItem));
+                
+            }
+            
+            dbConnection.close();
+            return c;
+            
+
+           
+
+        } catch (SQLException e) {
+
+            System.out.println(e.getMessage());
+            
+
+        } finally {
+
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+
+            if (dbConnection != null) {
+                dbConnection.close();
+            }
+
+        }
+        return null;
+    }
+        
+        public ArrayList<Item> getItemsAvatar(int idAvatar) throws SQLException{
+        Connection dbConnection = null;
+        PreparedStatement preparedStatement = null;
+        ArrayList<Item> c= new ArrayList<Item>();
+        
+        String insertTableSQL = "select * from ITEM "+
+                                " INNER JOIN ITEM_USUARIO "+
+                                "ON  ITEM.id_item = ITEM_USUARIO.id_item " +
+                            " where ITEM_USUARIO.id_avatar= ?";
+
+        try {
+            dbConnection = new DataBaseConnection().getDBConnection();
+            
+            
+            preparedStatement = dbConnection.prepareStatement(insertTableSQL);
+
+            preparedStatement.setInt(1, idAvatar);
+            
+
+            // execute insert SQL stetement
+            ResultSet rs;
+            rs= preparedStatement.executeQuery();
+            while(rs.next()){
+                String nombre= rs.getString("nombre");
+                String descripcion= rs.getString("descripcion");
+                int efectividad= rs.getInt("efectividad");
+                int rareza= rs.getInt("rareza");
+                int gana= rs.getInt("gana");
+                int pierde= rs.getInt("pierde");
+                int utilizado= rs.getInt("utilizado");
+                int idItem= rs.getInt("id_item");
+                int id= rs.getInt("id");
+                boolean unUso= rs.getBoolean("unUso");
+                
+                
+                c.add(new Item(nombre,descripcion, efectividad,rareza,gana, pierde,unUso,id,utilizado, idItem));
                 
             }
             

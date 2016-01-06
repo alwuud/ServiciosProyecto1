@@ -152,6 +152,17 @@ public class ResponseLogic {
         }
         
     }
+    
+     @WebMethod(operationName = "getItemUsuarioLibre")
+    public ArrayList<Item> getItemUsuarioLibre(@WebParam(name = "idUsuer") int idUsuer) {
+        //TODO write your implementation code here:
+        try{
+            return new Retornos().getItemsUsuarioLibres(idUsuer);
+        }catch(Exception e){
+            return null;
+        }
+        
+    }
 
     /**
      * Web service operation

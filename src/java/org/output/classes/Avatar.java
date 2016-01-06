@@ -20,6 +20,8 @@ public class Avatar {
     public Avatar(String nombre, int id){
         this.nombre= nombre;
         this.id= id;
+        this.uno=null;
+        this.dos= null;
     }
       
     
